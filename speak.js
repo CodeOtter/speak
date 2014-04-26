@@ -565,4 +565,114 @@ faces = new Array(':)', ':(', ':D', ':3', '<3', 'D:', ':C', 'C:', ':L', ':o', ':
 influencers = new Array('uhhh', 'come on', 'guys', 'yo', 'yes', 'well');
 singularEmotiveActions = new Array('am', 'can be', 'will be', 'shall be', 'might be', 'should be', 'could be', 'would be');
 pluralEmotiveActions = new Array('can be', 'will be', 'shall be', 'might be', 'are', 'should be', 'could be', 'would be');
-modalActions = new Array('can', 'will', 'shall', 'might', 'should', 'could', 'would');쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ쳌ￌ
+modalActions = new Array('can', 'will', 'shall', 'might', 'should', 'could', 'would');
+
+
+function speak(segments, statements) {
+	segments = segments || [
+        '%s %a %p? %o',
+        '%s %v %e',
+        '%p? %o %r? %d',
+        '%p %o %r %o',
+        '%a me, %o',
+        '%a %o',
+        '%m %a %p %d %o'
+    ];
+
+    statements = statements || [
+        'if %seg, %c %seg',
+        '%seg...? %seg',
+        'should %s %a %p? %o %c %m %a %p %d %o',
+        '%i, %seg',
+        '%seg',
+        //'%t %s %seg',
+        '%seg, %i',
+        '%s %v %e, %c? %seg',
+        '%s %t %m? %a %o',
+        '%o'
+    ];
+
+    var statement = getRandomItem(statements);
+
+    // Fill in all segments
+    while(statement.search('%seg') != -1) {
+    	statement = statement.split('%seg').join(getRandomItem(segments));
+    }
+    console.log(statement);
+    var position = statement.search('%');
+    while(position != -1) {
+    	var cursor = position + 1,
+    		symbol = '',
+    		word = '',
+    		code = statement.charCodeAt(cursor);
+
+    	while((code >= 97 && code <= 122) || code == 63) {
+    		if(code == 63) {
+    			if(getRandomRange(0, 100) > 80) {
+    				// Reject the symbol
+    				symbol = '';
+    				break;
+    			}
+    		} else {
+    			symbol += statement[cursor];
+    		}
+    		cursor += 1;
+    		code = statement.charCodeAt(cursor);
+    	}
+
+    	switch(symbol) {
+    		// Conditional (then, but, and, or)
+    		case 'c': word = getRandomItem(conditionals); break;
+    			
+    		// Reflection (is, was, will be)
+    		case 'r': word = getRandomItem(reflections); break;
+    		
+    		// Description (adjectives)
+    		case 'd': word = getRandomItem(descriptions); break;
+    		
+    		// Object (nouns)
+    		case 'o': word = getRandomItem(objects); break;
+    		
+    		//  Source (I, we, she, he, it)
+    		case 's': word = getRandomItem(sources); break;
+    		
+    		// Action (verbs)
+    		case 'a': word = getRandomItem(actions); break;
+    		
+    		// Emotive (angry, happy, not sure, confused, etc.)
+    		case 'e': word = getRandomItem(emotives); break;
+    		
+    		// Possessor (my, your, our, his, her, its, the, a)
+    		case 'p': word = getRandomItem(possessors); break;
+    		
+    		// Meaning (adverb)
+    		case 'm': word = getRandomItem(meanings); break;
+    		
+    		// Influencer (Uhhh, Come on, Guys, Yo, Yes, Well, No etc.)
+    		case 'i': word = getRandomItem(influencers); break;
+    		
+    		// Emotive Action (am, can, will, shall, might, are, should, could, would)
+    		case 'v':
+    			var previous = position - 3;
+    			if(previous < 0) {
+    				previous = 0;
+    			}
+    			console.log([previous, statement.substr(previous, 3), statement.substr(previous, 3).search('we')]);
+    			if(statement.substr(previous, 3).search('we') == -1) {
+    				word = getRandomItem(singularEmotiveActions); break;	
+    			} else {
+    				word = getRandomItem(pluralEmotiveActions); break;
+    			}
+    		
+    		// Modal Action (can, will, shall, might, are, should, could, would)
+    		case 't':
+    			word = getRandomItem(modalActions); break;
+    		
+    		default: continue;
+    	}
+
+    	statement = spliceSlice(statement, position, cursor - position, word);
+    	position = statement.search('%');
+    }
+    return statement + getRandomItem(punctuations);
+}ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ
