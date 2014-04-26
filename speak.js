@@ -675,4 +675,4 @@ function speak(segments, statements) {
     	position = statement.search('%');
     }
     return statement + getRandomItem(punctuations);
-}ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ쿏ￏ
+}
