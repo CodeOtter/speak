@@ -18,12 +18,23 @@ speak('angry');
 speak('calm');
 speak('joyful');
 ```
-This will select a specified mood (Which controls punctuation, influencers, and faces.)  Valid emotions are ```'anger', 'jealousy', 'fear', 'paranoia', 'curiosity', 'joyful', 'excited', 'calm', 'ashamed', 'apathetic', 'logical'```
+This will select a specified mood (Which controls punctuation, influencers, and faces.)  Valid emotions are ```'anger', 'jealousy', 'fear', 'paranoia', 'curiosity', 'joyful', 'excited', 'calm', 'ashamed', 'apathetic', 'logical'```  By default, the selected mood is random.
+
+---
 
 ---
 
 ```
-speak(null, ['I like %o, but %i, %a the %o already'])
+speak(null, 0);
+speak(null, 15);
+speak(null, 100);
+```
+This will randomly select a mood, populate a random premade statement based on the stupidity percentage of the second parameter, and return it.  At 15, you have a 15% chance of the statement making very little sense.  At 100, you have a 100% change of the statement making very little sense. By default, the stupidy is set to 0%.
+
+---
+
+```
+speak(null, null, ['I like %o, but %i, %a the %o already'])
 ```
 This will select a random statement from your second argument, populate it, and return it.  The following symbols are used to build statements:
 
