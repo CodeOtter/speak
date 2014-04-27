@@ -1,582 +1,45 @@
-// Segments are parts of object-centric sentences.
+//segments are parts of object-centric sentences.
 function getRandomItem(list) {
 	return list[Math.floor(Math.random()*list.length)];
 }
 
-// A random number between a range 
+// a random number between a range 
 function getRandomRange(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-// Splices a string
+// splices a string
 function spliceSlice(str, index, count, add) {
   return str.slice(0, index) + add + str.slice(index + count);
 }
 
-conditionals = new Array('then', 'but', 'and', 'or');
-reflections = new Array('is', 'was', 'will be', 'be');
-descriptions = new Array('red', 'bloated', 'gay', 'sweaty');
-objects = new Array(
-	'Gypsy curse',
-	'moment of silence',
-	'sausage festival',
-	'honest cop with nothing left to lose',
-	'Famine',
-	'Flesh-eating bacteria',
-	'Flying sex snakes',
-//	'Sexting',
-	'Shapeshifters',
-	'Porn stars',
-	'72 virgins',
-//	'drive-by shooting',
-	'time travel paradox',
-	'Authentic Mexican cuisine',
-	'Bling',
-	'Consultants',
-	'Crippling debt',
-	'Daddy issues',
-	'Donald Trump Seal of Approval™',
-//	'Dropping a chandelier on your enemies and riding the rope up',
-	'Former President George W. Bush',
-	'Full frontal nudity',
-	'Hormone injections',
-//	'Laying an egg',
-//	'Getting naked and watching Nickelodeon',
-//	'Pretending to care',
-	'Public ridicule',
-//	'Sharing needles',
-	'Boogers',
-	'inevitable heat death of the universe',
-	'miracle of childbirth',
-	'Rapture',
-//	'Whipping it out',
-	'White privilege',
-	'Wifely duties',
-	'Hamburglar',
-	'AXE Body Spray',
-	'Blood of Christ',
-//	'Horrifying laser hair removal accidents',
-	'BATMAN',
-	'Agriculture',
-	'robust mongoloid',
-	'Natural selection',
-	'Coat hanger abortions',
-//	'Eating all of the cookies before the AIDS bake-sale',
-	'Michelle Obama\'s arms',
-	'World of Warcraft',
-//	'Swooping',
-	'Obesity',
-	'homoerotic volleyball montage',
-	'Lockjaw',
-	'mating display',
-	'Testicular torsion',
-	'All-you-can-eat shrimp for $4.99',
-	'Domino\'s™ Oreo™ Dessert Pizza',
-	'Kanye West',
-	'Hot cheese',
-	'Raptor attacks',
-//	'Taking off your shirt',
-	'Smegma',
-	'Alcoholism',
-	'middle-aged man on roller skates',
-	'Care Bear Stare',
-//	'Bingeing and purging',
-	'Oversized lollipops',
-	'Self-loathing',
-	'Children on leashes',
-	'Half-assed foreplay',
-	'Holy Bible',
-	'German dungeon porn',
-//	'Being on fire',
-	'Teenage pregnancy',
-	'Gandhi',
-//	'Leaving an awkward voicemail',
-	'Uppercuts',
-	'Customer service representatives',
-	'erection that lasts longer than four hours',
-	'My genitals',
-//	'Picking up girls at the abortion clinic',
-	'Science',
-//	'Not reciprocating oral sex',
-	'Flightless birds',
-	'good sniff',
-//	'Waterboarding',
-	'balanced breakfast',
-	'Historically black colleges',
-//	'Actually taking candy from a baby',
-	'Make-A-Wish Foundation',
-	'clandestine butt scratch',
-	'Passive-aggressive Post-it notes',
-	'Chinese gymnastics team',
-//	'Switching to Geico',
-//	'Peeing a little bit',
-	'Home video of Oprah sobbing into a Lean Cuisine',
-	'Nocturnal emissions',
-	'Jews',
-	'My humps',
-	'Powerful thighs',
-//	'Winking at old people',
-	'Mr. Clean, right behind you',
-	'gentle caress of the inner thigh',
-	'Sexual tension',
-	'forbidden fruit',
-	'Skeletor',
-	'Fancy Feast',
-//	'Being rich',
-	'Sweet, sweet vengeance',
-	'Republicans',
-	'gassy antelope',
-	'Natalie Portman',
-//	'Copping a feel',
-	'Kamikaze pilots',
-	'Sean Connery',
-	'homosexual agenda',
-	'hardworking Mexican',
-	'falcon with a cap on its head',
-	'Altar boys',
-	'Kool-Aid Man',
-//	'Getting so angry that you pop a boner',
-	'Free samples',
-	'big hoopla about nothing',
-//	'Doing the right thing',
-	'Three-Fifths compromise',
-	'Lactation',
-	'World peace',
-	'RoboCop',
-	'Chutzpah',
-	'Justin Bieber',
-	'Oompa-Loompas',
-//	'Inappropriate yodeling',
-	'Puberty',
-	'Ghosts',
-	'asymmetric boob job',
-	'Vigorous jazz hands',
-//	'Fingering',
-	'Glenn Beck catching his scrotum on a curtain hook',
-	'GoGurt',
-	'Police brutality',
-	'John Wilkes Booth',
-	'Preteens',
-//	'Scalping',
-	'Stifling a giggle at the mention of Hutus and Tutsis',
-//	'"Tweeting."',
-	'Darth Vader',
-	'sad handjob',
-	'Exactly what you\'d expect',
-//	'Expecting a burp and vomiting on the floor',
-	'Adderall™',
-	'Embryonic stem cells',
-	'Tasteful sideboob',
-	'Panda sex',
-	'icepick lobotomy',
-	'Tom Cruise',
-	'Mouth herpes',
-	'Sperm whales',
-	'Homeless people',
-	'Third base',
-	'Incest',
-	'Pac-Man uncontrollably guzzling cum',
-	'mime having a stroke',
-	'Hulk Hogan',
-	'God',
-//	'Scrubbing under the folds',
-	'Golden showers',
-	'Emotions',
-//	'Licking things to claim them as your own',
-	'Pabst Blue Ribbon',
-	'placenta',
-	'Spontaneous human combustion',
-	'Friends with benefits',
-//	'Finger painting',
-	'Old-people smell',
-//	'Dying of dysentery',
-	'My inner demons',
-	'Super Soaker™ full of cat pee',
-	'Aaron Burr',
-//	'Cuddling',
-	'chronic',
-	'Cockfights',
-	'Friendly fire',
-	'Ronald Reagan',
-	'disappointing birthday party',
-	'sassy black woman',
-	'Mathletes',
-	'tiny horse',
-	'William Shatner',
-//	'Riding off into the sunset',
-	'M. Night Shyamalan plot twist',
-	'Jew-fros',
-	'Mutually-assured destruction',
-	'Pedophiles',
-	'Yeast',
-//	'Grave robbing',
-//	'Eating the last known bison',
-	'Catapults',
-	'Poor people',
-//	'Forgetting the Alamo',
-	'Hustle',
-	'Force',
-//	'Wiping her butt',
-	'Intelligent design',
-	'Loose lips',
-	'AIDS',
-	'Pictures of boobs',
-	'Übermensch',
-	'Sarah Palin',
-	'American Gladiators',
-//	'Getting really high',
-	'Scientology',
-	'Penis envy',
-//	'Praying the gay away',
-	'Frolicking',
-	'midgets shitting into a bucket',
-	'KKK',
-	'Genghis Khan',
-	'Crystal meth',
-	'Serfdom',
-	'Stranger danger',
-	'Bop It™',
-	'Shaquille O\'Neal\'s acting career',
-	'Prancing',
-	'Vigilante justice',
-	'Overcompensation',
-	'Pixelated bukkake',
-	'lifetime of sadness',
-	'Racism',
-	'Dwarf tossing',
-	'Sunshine and rainbows',
-	'monkey smoking a cigar',
-	'Flash flooding',
-	'Lance Armstrong\'s missing testicle',
-	'Dry heaving',
-	'terrorists',
-	'Britney Spears at 55',
-	'Attitude',
-//	'Breaking out into song and dance',
-	'Leprosy',
-	'Gloryholes',
-	'Nipple blades',
-	'heart of a child',
-	'Puppies',
-//	'Waking up half-naked in a Denny\'s parking lot',
-	'Dental dams',
-	'Toni Morrison\'s vagina',
-	'taint',
-//	'Active listening',
-	'Ethnic cleansing',
-	'Little Engine That Could',
-	'invisible hand',
-//	'Waiting ‘til marriage',
-	'Unfathomable stupidity',
-	'Euphoria™ by Calvin Klein',
-	'Re-gifting',
-	'Autocannibalism',
-	'Erectile dysfunction',
-	'My collection of high-tech sex toys',
-	'Pope',
-	'White people',
-	'Tentacle porn',
-	'Glenn Beck convulsively vomiting as a brood of crab spiders hatches in his brain and erupts from his tear ducts',
-	'Too much hair gel',
-	'Seppuku',
-	'Same-sex ice dancing',
-//	'Cheating in the Special Olympics',
-	'Charisma',
-	'Keanu Reeves',
-	'Sean Penn',
-	'Nickelback',
-	'look-see',
-//	'Pooping back and forth. Forever',
-	'Menstruation',
-	'Kids with ass cancer',
-	'salty surprise',
-	'South',
-	'violation of our most basic human rights',
-	'YOU MUST CONSTRUCT ADDITIONAL PYLONS',
-//	'Being fabulous',
-	'Necrophilia',
-	'Centaurs',
-	'Bill Nye the Science Guy',
-	'Black people',
-	'Chivalry',
-	'Lunchables™',
-	'Bitches',
-	'profoundly handicapped',
-	'Heartwarming orphans',
-	'MechaHitler',
-	'Fiery poops',
-	'Another goddamn vampire movie',
-	'Tangled Slinkys',
-//	'true meaning of Christmas',
-	'Estrogen',
-	'zesty breakfast burrito',
-//	'That thing that electrocutes your abs',
-//	'Passing a kidney stone',
-	'bleached asshole',
-	'Michael Jackson',
-	'Cybernetic enhancements',
-	'Guys who don\'t call',
-	'Smallpox blankets',
-	'Masturbation',
-	'Classist undertones',
-	'Queefing',
-//	'Concealing a boner',
-	'Edible underpants',
-	'Viagra',
-	'Soup that is too hot',
-	'Muhammad (Praise Be Unto Him)',
-	'Surprise sex',
-	'Five-Dollar Footlongs™',
-//	'Drinking alone',
-	'Dick fingers',
-	'Multiple stab wounds',
-//	'Soiling oneself',
-	'Child abuse',
-	'Anal beads',
-	'Civilian casualties',
-//	'Pulling out',
-	'Robert Downey, Jr',
-	'Horse meat',
-	'really cool hat',
-	'Kim Jong-il',
-	'stray pube',
-	'Jewish fraternities',
-	'token minority',
-	'Doin\' it in the butt',
-//	'Feeding Rosie O\'Donnell',
-//	'Teaching a robot to love',
-	'can of whoop-ass',
-	'windmill full of corpses',
-	'Count Chocula',
-//	'Wearing underwear inside-out to avoid doing laundry',
-	'death ray',
-	'glass ceiling',
-	'cooler full of organs',
-	'American Dream',
-	'Keg stands',
-	'When you fart and a little bit comes out',
-	'Take-backsies',
-	'Dead babies',
-	'Foreskin',
-	'Saxophone solos',
-	'Italians',
-	'fetus',
-//	'Firing a rifle into the air while balls deep in a squealing hog',
-	'Dick Cheney',
-	'Amputees',
-	'Eugenics',
-	'My relationship status',
-	'Christopher Walken',
-	'Bees',
-	'Harry Potter erotica',
-	'College',
-//	'Getting drunk on mouthwash',
-	'Nazis',
-	'8 oz. of sweet Mexican black-tar heroin',
-	'Stephen Hawking talking dirty',
-	'Dead parents',
-	'Object permanence',
-	'Opposable thumbs',
-	'Racially-biased SAT questions',
-	'Jibber-jabber',
-	'Chainsaws for hands',
-	'Nicolas Cage',
-	'Child beauty pageants',
-	'Explosions',
-//	'Sniffing glue',
-	'Glenn Beck being harried by a swarm of buzzards',
-	'Repression',
-	'Roofies',
-	'My vagina',
-	'Assless chaps',
-	'murder most foul',
-//	'Giving 110 percent',
-	'Her Royal Highness, Queen Elizabeth II',
-	'Trail of Tears',
-//	'Being marginalized',
-	'Goblins',
-	'Hope',
-	'Rev. Dr. Martin Luther King, Jr',
-	'micropenis',
-	'My soul',
-	'hot mess',
-	'Vikings',
-	'Hot people',
-	'Seduction',
-	'Oedipus complex',
-	'Geese',
-	'Global warming',
-	'New Age music',
-	'Hot Pockets',
-//	'Making a pouty face',
-	'Vehicular manslaughter',
-	'Women\'s suffrage',
-	'defective condom',
-	'Judge Judy',
-	'African children',
-	'Virginia Tech Massacre',
-	'Barack Obama',
-	'Asians who aren\'t good at math',
-	'Elderly Japanese men',
-//	'Exchanging pleasantries',
-	'Heteronormativity',
-//	'Parting the Red Sea',
-	'Arnold Schwarzenegger',
-	'Road head',
-	'Spectacular abs',
-	'Figgy pudding',
-	'mopey zoo lion',
-	'bag of magic beans',
-	'Poor life choices',
-	'My sex life',
-	'Auschwitz',
-	'snapping turtle biting the tip of your penis',
-	'thermonuclear detonation',
-	'clitoris',
-	'Big Bang',
-	'Land mines',
-	'Friends who eat all the snacks',
-	'Goats eating cans',
-	'Dance of the Sugar Plum Fairy',
-//	'Jerking off into a pool of children\'s tears',
-	'Man meat',
-	'Me time',
-	'Underground Railroad',
-	'Poorly-timed Holocaust jokes',
-	'sea of troubles',
-	'Lumberjack fantasies',
-	'Morgan Freeman\'s voice',
-	'Women in yogurt commercials',
-	'Natural male enhancement',
-//	'Being a motherfucking sorcerer',
-	'Genital piercings',
-	'Passable transvestites',
-	'Sexy pillow fights',
-	'Balls',
-	'Grandma',
-	'Friction',
-	'Party poopers',
-//	'Farting and walking away',
-//	'Being a dick to children',
-//	'Booby-trapping the house to foil burglars',
-	'Tempur-Pedic Swedish Sleep System™',
-//	'Dying',
-	'Hurricane Katrina',
-	'gays',
-	'folly of man',
-	'Men',
-	'Amish',
-	'Pterodactyl eggs',
-	'Team-building exercises',
-	'brain tumor',
-	'Cards Against Humanity',
-	'Fear itself',
-	'Lady Gaga',
-	'milk man',
-	'foul mouth',
-	'big black dick',
-	'beached whale',
-	'bloody pacifier',
-	'crappy little hand',
-	'low standard of living',
-	'nuanced critique',
-	'Panty raids',
-	'passionate Latino lover',
-	'rival dojo',
-	'web of lies',
-	'woman scorned',
-	'Clams',
-//	'Apologizing',
-	'Appreciative snapping',
-	'Neil Patrick Harris',
-//	'Beating your wives',
-//	'Being a dinosaur',
-	'Shaft',
-	'Bosnian chicken farmers',
-	'Nubile slave boys',
-	'Carnies',
-//	'Coughing into a vagina',
-	'Suicidal thoughts',
-//	'Dancing with a broom',
-//	'Deflowering the princess',
-	'Dorito breath',
-//	'Eating an albino',
-	'Enormous Scandinavian women',
-//	'Fabricating statistics',
-//	'Finding a skeleton',
-	'Gandalf',
-	'Genetically engineered super-soldiers',
-	'George Clooney\'s musk',
-//	'Getting abducted by Peter Pan',
-//	'Getting in her pants, politely',
-	'Gladiatorial combat',
-	'Good grammar',
-	'Hipsters',
-	'Historical revisionism',
-	'Insatiable bloodlust',
-	'Jafar',
-	'Jean-Claude Van Damme',
-	'Just the tip',
-	'Mad hacky-sack skills',
-//	'Leveling up',
-//	'Literally eating shit',
-//	'Making the penises kiss',
-	'Media coverage',
-	'Medieval Times Dinner and Tournament',
-	'Moral ambiguity',
-	'My machete',
-	'One thousand Slim Jims',
-	'Ominous background music',
-//	'Overpowering your father',
-//	'Pistol-whipping a hostage',
-	'Quiche',
-	'Quivering jowls',
-	'Revenge fucking',
-//	'Ripping into a man\'s chest and pulling out his still-beating heart',
-	'Ryan Gosling riding in on a white horse',
-	'Santa Claus',
-	'Scrotum tickling',
-	'Sexual humiliation',
-	'Sexy Siamese twins',
-	'Slow motion',
-	'Space muffins',
-	'Statistically validated stereotypes',
-	'Sudden Poop Explosion Disease',
-	'boners of the elderly',
-	'economy',
-	'Fanta girls',
-	'Gulags',
-	'harsh light of day',
-	'hiccups',
-	'shambling corpse of Larry King',
-	'four arms of Vishnu',
-//	'Being a busy adult with many important things to do',
-//	'Tripping balls',
-	'Words, words, words',
-	'Zeus\'s sexual appetites.'
-);
-sources = new Array('I', 'we');
-actions = new Array('shank', 'love', 'cuttle');
-emotives = new Array('angry', 'happy', 'not sure', 'confused');
-possessors = new Array('my', 'your', 'our', 'his', 'her', 'its', 'the', 'a');
-meanings = new Array('swiftly', 'stupidly');
-punctuations = new Array('.', '...', '!', '?', '!!!', '?!?');
-faces = new Array(':)', ':(', ':D', ':3', '<3', 'D:', ':C', 'C:', ':L', ':o', ':O', ':P', '.___.', '-___-', '-___-\'');
-influencers = new Array('uhhh', 'come on', 'guys', 'yo', 'yes', 'well');
+moods = new Array('anger', 'jealousy', 'fear', 'paranoia', 'curiosity', 'joyful', 'excited', 'calm', 'ashamed', 'apathetic', 'logical');
+sources = new Array('i', 'we');
+possessors = new Array('my', 'your', 'our', 'his', 'her', 'its', 'the', 'this');
+subjects = new Array('her', 'him', 'me', 'this', 'it', 'that');
 singularEmotiveActions = new Array('am', 'can be', 'will be', 'shall be', 'might be', 'should be', 'could be', 'would be');
 pluralEmotiveActions = new Array('can be', 'will be', 'shall be', 'might be', 'are', 'should be', 'could be', 'would be');
-modalActions = new Array('can', 'will', 'shall', 'might', 'should', 'could', 'would');
+modalActions = new Array('can', 'will', 'shall', 'might', 'should', 'could', 'would'); 
+conditionals = new Array('then', 'but', 'and', 'or');
+reflections = new Array('is', 'was', 'will be', 'be');
+actions = new Array('accept', 'care', 'could', 'enjoy', 'happen', 'lead', 'open', 'reduce', 'settle', 'teach', 'account', 'carry', 'count', 'examine', 'hate', 'learn', 'order', 'refer', 'shake', 'tell', 'achieve', 'catch', 'cover', 'have', 'leave', 'ought', 'reflect', 'shall', 'tend', 'act', 'cause', 'create', 'expect', 'head', 'lend', 'own', 'refuse', 'share', 'test', 'add', 'change', 'cross', 'experience', 'hear', 'let', 'pass', 'regard', 'shoot', 'thank', 'admit', 'charge', 'cry', 'explain', 'help', 'lie', 'pay', 'relate', 'should', 'think', 'affect', 'check', 'cut', 'express', 'hide', 'like', 'perform', 'release', 'shout', 'throw', 'afford', 'choose', 'damage', 'extend', 'hit', 'limit', 'pick', 'remain', 'show', 'touch', 'agree', 'claim', 'dance', 'face', 'hold', 'link', 'place', 'remember', 'shut', 'train', 'aim', 'clean', 'deal', 'fail', 'hope', 'listen', 'plan', 'remove', 'sing', 'travel', 'allow', 'clear', 'decide', 'fall', 'hurt', 'live', 'play', 'repeat', 'sit', 'treat', 'answer', 'climb', 'deliver', 'fasten', 'identify', 'look', 'point', 'replace', 'sleep', 'try', 'appear', 'close', 'demand', 'feed', 'imagine', 'lose', 'prefer', 'reply', 'smile', 'turn', 'apply', 'collect', 'deny', 'feel', 'improve', 'love', 'prepare', 'report', 'sort', 'understand', 'argue', 'come', 'depend', 'fight', 'include', 'make', 'present', 'represent', 'sound', 'use', 'arrange', 'commit', 'describe', 'fill', 'increase', 'manage', 'press', 'require', 'speak', 'used to', 'arrive', 'compare', 'design', 'find', 'indicate', 'mark', 'prevent', 'rest', 'stand', 'visit', 'ask', 'complain', 'destroy', 'finish', 'influence', 'matter', 'produce', 'result', 'start', 'vote', 'attack', 'complete', 'develop', 'fit', 'inform', 'may', 'promise', 'return', 'state', 'wait', 'avoid', 'concern', 'die', 'fly', 'intend', 'mean', 'protect', 'reveal', 'stay', 'walk', 'base', 'confirm', 'disappear', 'fold', 'introduce', 'measure', 'prove', 'ring', 'stick', 'want', 'be', 'connect', 'discover', 'follow', 'invite', 'meet', 'provide', 'rise', 'stop', 'warn', 'beat', 'consider', 'discuss', 'force', 'involve', 'mention', 'publish', 'roll', 'study', 'wash', 'become', 'consist', 'divide', 'forget', 'join', 'might', 'pull', 'run', 'succeed', 'watch', 'begin', 'contact', 'do', 'forgive', 'jump', 'mind', 'push', 'save', 'suffer', 'wear', 'believe', 'contain', 'draw', 'form', 'keep', 'miss', 'put', 'say', 'suggest', 'will', 'belong', 'continue', 'dress', 'found', 'kick', 'move', 'raise', 'see', 'suit', 'win', 'break', 'contribute', 'drink', 'gain', 'kill', 'must', 'reach', 'supply', 'wish', 'build', 'control', 'drive', 'get', 'knock', 'need', 'read', 'sell', 'support', 'wonder', 'burn', 'cook', 'drop', 'give', 'know', 'notice', 'realize', 'send', 'suppose', 'work', 'buy', 'copy', 'eat', 'go', 'last', 'obtain', 'receive', 'separate', 'survive', 'worry', 'call', 'correct', 'enable', 'grow', 'laugh', 'occur', 'recognize', 'serve', 'take', 'would', 'can', 'cost', 'encourage', 'handle', 'lay', 'offer', 'record', 'set', 'talk', 'write');
+meanings = new Array('just', 'also', 'very', 'even', 'still', 'never', 'really', 'about', 'over', 'always', 'often', 'however', 'almost', 'later', 'much', 'once', 'already', 'enough', 'maybe', 'actually', 'probably', 'of course', 'perhaps', 'sometimes', 'finally', 'more', 'less', 'better', 'early', 'especially', 'either', 'quite', 'simply', 'nearly', 'certainly', 'quickly', 'recently', 'usually', 'thus', 'exactly', 'hard', 'particularly', 'pretty', 'clearly', 'indeed', 'rather', 'suddenly', 'best', 'instead', 'fast', 'eventually', 'directly');
+descriptions = new Array('so', 'different', 'used', 'important', 'every', 'large', 'available', 'popular', 'able', 'basic', 'known', 'various', 'difficult', 'several', 'united', 'historical', 'hot', 'useful', 'mental', 'scared', 'additional', 'emotional', 'old', 'political', 'similar', 'healthy', 'financial', 'medical', 'traditional', 'federal', 'entire', 'strong', 'actual', 'significant', 'successful', 'electrical', 'expensive', 'pregnant', 'intelligent', 'interesting', 'poor', 'happy', 'responsible', 'cute', 'helpful', 'recent', 'willing', 'nice', 'wonderful', 'impossible', 'serious', 'huge', 'rare', 'technical', 'typical', 'competitive', 'critical', 'electronic', 'immediate', 'whose', 'aware', 'educational', 'environmental', 'global', 'legal', 'relevant', 'accurate', 'capable', 'dangerous', 'dramatic', 'efficient', 'powerful', 'foreign', 'hungry', 'practical', 'psychological', 'severe', 'suitable', 'numerous', 'sufficient', 'unusual', 'consistent', 'cultural', 'existing', 'famous', 'pure', 'afraid', 'obvious', 'careful', 'latter', 'obviously', 'unhappy', 'acceptable', 'aggressive', 'distinct', 'eastern', 'logical', 'reasonable', 'strict', 'successfully', 'administrative', 'automatic', 'civil', 'former', 'massive', 'southern', 'unfair', 'visible', 'alive', 'angry', 'desperate', 'exciting', 'friendly', 'lucky', 'realistic', 'sorry', 'ugly', 'unlikely', 'anxious', 'comprehensive', 'curious', 'impressive', 'informal', 'inner', 'pleasant', 'sexual', 'sudden', 'terrible', 'unable', 'weak', 'wooden', 'asleep', 'confident', 'conscious', 'decent', 'embarrassed', 'guilty', 'lonely', 'mad', 'nervous', 'odd', 'remarkable', 'substantial', 'suspicious', 'tall', 'tiny', 'more', 'some', 'one', 'all', 'many', 'most', 'other', 'such', 'even', 'new', 'just', 'good', 'any', 'each', 'much', 'own', 'great', 'another', 'same', 'few', 'free', 'right', 'still', 'best', 'public', 'human', 'both', 'local', 'sure', 'better', 'general', 'specific', 'enough', 'long', 'small', 'less', 'high', 'certain', 'little', 'common', 'next', 'simple', 'hard', 'past', 'big', 'possible', 'particular', 'real', 'major', 'personal', 'current', 'left', 'national', 'least', 'natural', 'physical', 'short', 'last', 'single', 'individual', 'main', 'potential', 'professional', 'international', 'lower', 'open', 'according', 'alternative', 'special', 'working', 'true', 'whole', 'clear', 'dry', 'easy', 'cold', 'commercial', 'full', 'low', 'primary', 'worth', 'necessary', 'positive', 'present', 'close', 'creative', 'green', 'late', 'fit', 'glad', 'proper', 'complex', 'content', 'due', 'effective', 'middle', 'regular', 'fast', 'independent', 'original', 'wide', 'beautiful', 'complete', 'active', 'negative', 'safe', 'visual', 'wrong', 'ago', 'quick', 'ready', 'straight', 'white', 'direct', 'excellent', 'extra', 'junior', 'pretty', 'unique', 'classic', 'final', 'overall', 'private', 'separate', 'western', 'alone', 'familiar', 'official', 'perfect', 'bright', 'broad', 'comfortable', 'flat', 'rich', 'warm', 'young', 'heavy', 'valuable', 'correct', 'leading', 'slow', 'clean', 'fresh', 'normal', 'secret', 'tough', 'brown', 'cheap', 'deep', 'objective', 'secure', 'thin', 'chemical', 'cool', 'extreme', 'exact', 'fair', 'fine', 'formal', 'opposite', 'remote', 'total', 'vast', 'lost', 'smooth', 'dark', 'double', 'equal', 'firm', 'frequent', 'internal', 'sensitive', 'constant', 'minor', 'previous', 'raw', 'soft', 'solid', 'weird', 'amazing', 'annual', 'busy', 'dead', 'false', 'round', 'sharp', 'thick', 'wise', 'equivalent', 'initial', 'narrow', 'nearby', 'proud', 'spiritual', 'wild', 'adult', 'apart', 'brief', 'crazy', 'prior', 'rough', 'sad', 'sick', 'strange', 'external', 'illegal', 'loud', 'mobile', 'nasty', 'ordinary', 'royal', 'senior', 'super', 'tight', 'upper', 'yellow', 'dependent', 'funny', 'gross', 'ill', 'spare', 'sweet', 'upstairs', 'usual', 'brave', 'calm', 'dirty', 'downtown', 'grand', 'honest', 'loose', 'male', 'quiet', 'brilliant', 'dear', 'drunk', 'empty', 'female', 'inevitable', 'neat', 'ok', 'representative', 'silly', 'slight', 'smart', 'stupid', 'temporary', 'weekly', 'that', 'this', 'what', 'which', 'time', 'these', 'work', 'no', 'only', 'first', 'over', 'business', 'his', 'game', 'think', 'after', 'life', 'day', 'home', 'economy', 'away', 'either', 'fat', 'key', 'training', 'top', 'level', 'far', 'fun', 'house', 'kind', 'future', 'action', 'live', 'period', 'subject', 'mean', 'stock', 'chance', 'beginning', 'upset', 'chicken', 'head', 'material', 'salt', 'car', 'appropriate', 'inside', 'outside', 'standard', 'medium', 'choice', 'north', 'square', 'born', 'capital', 'shot', 'front', 'living', 'plastic', 'express', 'mood', 'feeling', 'otherwise', 'plus', 'saving', 'animal', 'budget', 'minute', 'character', 'maximum', 'novel', 'plenty', 'select', 'background', 'forward', 'glass', 'joint', 'master', 'red', 'vegetable', 'ideal', 'kitchen', 'mother', 'party', 'relative', 'signal', 'street', 'connect', 'minimum', 'sea', 'south', 'status', 'daughter', 'hour', 'trick', 'afternoon', 'gold', 'mission', 'agent', 'corner', 'east', 'neither', 'parking', 'routine', 'swimming', 'winter', 'airline', 'designer', 'dress', 'emergency', 'evening', 'extension', 'holiday', 'horror', 'mountain', 'patient', 'proof', 'west', 'wine', 'expert', 'native', 'opening', 'silver', 'waste', 'plane', 'leather', 'purple', 'specialist', 'bitter', 'incident', 'motor', 'pretend', 'prize', 'resident', 'angry', 'furious', 'bad', 'awful', 'terrible', 'horrible', 'big', 'huge', 'gigantic', 'giant', 'clean', 'spotless', 'cold', 'freezing', 'crowded', 'packed', 'dirty', 'filthy', 'funny', 'hilarious', 'good', 'wonderful', 'fantastic', 'excellent', 'hot', 'boiling', 'hungry', 'starving', 'interesting', 'fascinating', 'old', 'ancient', 'pretty', 'gorgeous', 'scary', 'terrifying', 'small', 'tiny', 'surprising', 'astounding', 'tired', 'exhausted', 'ugly', 'hideous');
+objects = new Array('gypsy curse', 'moment of silence', 'sausage festival', 'honest cop with nothing left to lose', 'famine', 'flesh-eating bacteria', 'flying sex snakes', 'shapeshifters', 'porn stars', '72 virgins', 'time travel paradox', 'authentic mexican cuisine', 'bling', 'consultants', 'crippling debt', 'daddy issues', 'donald trump seal of approval', 'former president george w. bush', 'full frontal nudity', 'hormone injections', 'public ridicule', 'boogers', 'inevitable heat death of the universe', 'miracle of childbirth', 'rapture', 'white privilege', 'wifely duties', 'hamburglar', 'axe body spray', 'blood of christ', 'batman', 'agriculture', 'robust mongoloid', 'natural selection', 'coat hanger abortions', 'michelle obama\'s arms', 'world of warcraft', 'obesity', 'homoerotic volleyball montage', 'lockjaw', 'mating display', 'testicular torsion', 'all-you-can-eat shrimp for $4.99', 'domino\'s oreo dessert pizza', 'kanye west', 'hot cheese', 'raptor attacks', 'smegma', 'alcoholism', 'middle-aged man on roller skates', 'care bear stare', 'oversized lollipops', 'self-loathing', 'children on leashes', 'half-assed foreplay', 'holy bible', 'german dungeon porn', 'teenage pregnancy', 'gandhi', 'uppercuts', 'customer service representatives', 'genitals', 'science', 'flightless birds', 'good sniff', 'balanced breakfast', 'historically black colleges', 'make-a-wish foundation', 'clandestine butt scratch', 'passive-aggressive post-it notes', 'chinese gymnastics team', 'nocturnal emissions', 'jews', 'humps', 'powerful thighs', 'gentle caress of the inner thigh', 'sexual tension', 'forbidden fruit', 'skeletor', 'fancy feast', 'sweet, sweet vengeance', 'republicans', 'gassy antelope', 'natalie portman', 'kamikaze pilots', 'sean connery', 'homosexual agenda', 'hardworking mexican', 'falcon with a cap on its head', 'altar boys', 'kool-aid man', 'free samples', 'big hoopla about nothing', 'three-fifths compromise', 'lactation', 'world peace', 'robocop', 'chutzpah', 'justin bieber', 'oompa-loompas', 'puberty', 'ghosts', 'asymmetric boob job', 'vigorous jazz hands', 'gogurt', 'police brutality', 'john wilkes booth', 'preteens', 'darth vader', 'sad handjob', 'adderall', 'embryonic stem cells', 'tasteful sideboob', 'panda sex', 'icepick lobotomy', 'tom cruise', 'mouth herpes', 'sperm whales', 'homeless people', 'third base', 'incest', 'pac-man uncontrollably guzzling cum', 'mime having a stroke', 'hulk hogan', 'god', 'golden showers', 'emotions', 'pabst blue ribbon', 'placenta', 'spontaneous human combustion', 'friends with benefits', 'old-people smell', 'inner demons', 'super soaker full of cat pee', 'aaron burr', 'chronic', 'cockfights', 'friendly fire', 'ronald reagan', 'disappointing birthday party', 'sassy black woman', 'mathletes', 'tiny horse', 'william shatner', 'm. night shyamalan plot twist', 'jew-fros', 'mutually-assured destruction', 'pedophiles', 'yeast', 'catapults', 'poor people', 'hustle', 'force', 'intelligent design', 'loose lips', 'aids', 'pictures of boobs', 'Ubermensch', 'sarah palin', 'american gladiators', 'scientology', 'penis envy', 'frolicking', 'midgets shitting into a bucket', 'KKK', 'genghis khan', 'crystal meth', 'serfdom', 'stranger danger', 'bop it', 'shaquille o\'neal\'s acting career', 'prancing', 'vigilante justice', 'overcompensation', 'pixelated bukkake', 'lifetime of sadness', 'racism', 'dwarf tossing', 'sunshine and rainbows', 'monkey smoking a cigar', 'flash flooding', 'lance armstrong\'s missing testicle', 'dry heaving', 'terrorists', 'britney spears at 55', 'attitude', 'leprosy', 'gloryholes', 'nipple blades', 'heart of a child', 'puppies', 'dental dams', 'toni morrison\'s vagina', 'taint', 'ethnic cleansing', 'little engine that could', 'invisible hand', 'unfathomable stupidity', 'euphoria by calvin klein', 're-gifting', 'autocannibalism', 'erectile dysfunction', 'collection of high-tech sex toys', 'pope', 'white people', 'tentacle porn', 'too much hair gel', 'seppuku', 'same-sex ice dancing', 'charisma', 'keanu reeves', 'sean penn', 'nickelback', 'look-see', 'menstruation', 'kids with ass cancer', 'salty surprise', 'south', 'violation of our most basic human rights', 'necrophilia', 'centaurs', 'bill nye the science guy', 'black people', 'chivalry', 'lunchables', 'bitches', 'profoundly handicapped', 'heartwarming orphans', 'mechahitler', 'fiery poops', 'another goddamn vampire movie', 'tangled slinky', 'estrogen', 'zesty breakfast burrito', 'bleached asshole', 'michael jackson', 'cybernetic enhancements', 'guys who don\'t call', 'smallpox blankets', 'masturbation', 'classist undertones', 'queefing', 'edible underpants', 'viagra', 'soup that is too hot', 'muhammad (praise be unto him)', 'surprise sex', 'five-dollar footlongs', 'dick fingers', 'multiple stab wounds', 'child abuse', 'anal beads', 'civilian casualties', 'robert downey, jr', 'horse meat', 'really cool hat', 'kim jong-il', 'stray pube', 'jewish fraternities', 'token minority', 'doin\' it in the butt', 'can of whoop-ass', 'windmill full of corpses', 'count chocula', 'death ray', 'glass ceiling', 'cooler full of organs', 'american dream', 'keg stands', 'take-backsies', 'dead babies', 'foreskin', 'saxophone solos', 'italians', 'fetus', 'dick cheney', 'amputees', 'eugenics', 'relationship status', 'christopher walken', 'bees', 'harry potter erotica', 'college', 'nazis', '8 oz. of sweet mexican black-tar heroin', 'stephen hawking talking dirty', 'dead parents', 'object permanence', 'opposable thumbs', 'racially-biased sat questions', 'jibber-jabber', 'chainsaws for hands', 'nicolas cage', 'child beauty pageants', 'explosions', 'repression', 'roofies', 'vagina', 'assless chaps', 'murder most foul', 'trail of tears', 'goblins', 'hope', 'rev. dr. martin luther king, jr', 'micropenis', 'soul', 'hot mess', 'vikings', 'hot people', 'seduction', 'oedipus complex', 'geese', 'global warming', 'new age music', 'hot pockets', 'vehicular manslaughter', 'women\'s suffrage', 'defective condom', 'judge judy', 'african children', 'virginia tech massacre', 'barack obama', 'asians who aren\'t good at math', 'elderly japanese men', 'heteronormativity', 'arnold schwarzenegger', 'road head', 'spectacular abs', 'figgy pudding', 'mopey zoo lion', 'bag of magic beans', 'poor life choices', 'sex life', 'auschwitz', 'thermonuclear detonation', 'clitoris', 'big bang', 'land mines', 'friends who eat all the snacks', 'goats eating cans', 'dance of the sugar plum fairy', 'man meat', 'me time', 'underground railroad', 'poorly-timed holocaust jokes', 'sea of troubles', 'lumberjack fantasies', 'morgan freeman\'s voice', 'women in yogurt commercials', 'natural male enhancement', 'genital piercings', 'passable transvestites', 'sexy pillow fights', 'balls', 'grandma', 'friction', 'party poopers', 'tempur-pedic swedish sleep system', 'hurricane katrina', 'gays', 'folly of man', 'men', 'amish', 'pterodactyl eggs', 'team-building exercises', 'brain tumor', 'fear itself', 'lady gaga', 'milk man', 'foul mouth', 'big black dick', 'beached whale', 'bloody pacifier', 'crappy little hand', 'low standard of living', 'nuanced critique', 'panty raids', 'passionate latino lover', 'rival dojo', 'web of lies', 'woman scorned', 'clams', 'appreciative snapping', 'neil patrick harris', 'shaft', 'bosnian chicken farmers', 'nubile slave boys', 'carnies', 'suicidal thoughts', 'dorito breath', 'enormous scandinavian women', 'gandalf', 'genetically engineered super-soldiers', 'george clooney\'s musk', 'gladiatorial combat', 'good grammar', 'hipsters', 'historical revisionism', 'insatiable bloodlust', 'jafar', 'jean-claude van damme', 'just the tip', 'mad hacky-sack skills', 'media coverage', 'medieval times dinner and tournament', 'moral ambiguity', 'machete', 'one thousand slim jims', 'ominous background music', 'quiche', 'quivering jowls', 'revenge fucking', 'ryan gosling riding in on a white horse', 'santa claus', 'scrotum tickling', 'sexual humiliation', 'sexy siamese twins', 'slow motion', 'space muffins', 'statistically validated stereotypes', 'sudden poop explosion disease', 'boners of the elderly', 'economy', 'fanta girls', 'gulags', 'harsh light of day', 'hiccups', 'shambling corpse of larry king', 'four arms of vishnu', 'words, words, words', 'zeus\'s sexual appetites.');
 
-
-function speak(segments, statements) {
+function speak(mood, segments, statements) {
 	segments = segments || [
         '%s %a %p? %o',
-        '%s %v %e',
+        '%s %v %d',
         '%p? %o %r? %d',
         '%p %o %r %o',
-        '%a me, %o',
-        '%a %o',
-        '%m %a %p %d %o'
+        '%s %a %j, %o',
+        '%s %a %o',
+        '%s %a %p %d %o',
+        '%o %r %p %d %o',
+        '%s %t %a %o',
+        '%m %a',
+        '%i'
     ];
 
     statements = statements || [
@@ -585,16 +48,94 @@ function speak(segments, statements) {
         'should %s %a %p? %o %c %m %a %p %d %o',
         '%i, %seg',
         '%seg',
-        //'%t %s %seg',
-        '%seg, %i',
-        '%s %v %e, %c? %seg',
+        '%seg. %i',
+        '%s %v %d, %c? %seg',
         '%s %t %m? %a %o',
-        '%o'
+        '%o',
+        'i don\'t always %a, but when i do, it\'s %o',
+        'maybe she\'s born with it.  maybe it\s %o',
+        'i got 99 problems but %o ain\'t one',
+        'i drink to forget %o',
+        '%seg.  that\'s how I want to die',
+        'for my next trick, I will pull %o out of %o',
+        '%o is a slippery slope that leads to %o',
+        '%o.  high five, bro',
+        'during sex, I like to think about %o',
+        '%seg: kid-tested, mother-approved',
+        '%o + %o = %o',
+        'science will never explain %o',
+        'my country, \'tis of thee, sweet land of %o',
+        '#%o',
+        '%o.tumblr.com',
+        '%o. the other white meat',
+        'you\'re not gonna believe this, but %seg',
+        '%o ain\'t nothin\' to fuck wit\'!'
     ];
 
+    mood = mood || getRandomItem(moods);
+    
+    switch(mood) {
+    	default:
+	    case 'anger':
+	        influencers = new Array('goddamnit', 'fuck', 'shit', 'argghhh', 'grrrrr');
+	        punctuations = new Array('.', '...', '!', '!!!', '?!?');
+	        faces = new Array('>:)', '>:(', '>:|');
+	    break;
+	    case 'jealousy':
+	        influencers = new Array('hrmmm', 'oh yes', 'hey', 'oooooo');
+	        punctuations = new Array('.', '...', '!', '?', '!!!', '?!?');
+	        faces = new Array(':)', ':(', ':d', '<3', ':c', 'c:', ':o', ':O', '.___.', '-___-', '-___-\'');
+		break;
+	    case 'fear':
+	        influencers = new Array('oh god', 'no', 'well', 'ummmm');
+	        punctuations = new Array('.', '...', '!', '?', '!!!', '?!?');
+	        faces = new Array(':(', ':C', 'D:', ':o', ':O', '-___-\'');
+	    break;
+	    case 'paranoia':
+	        influencers = new Array('wait', 'what', 'no', '');
+	        punctuations = new Array('.', '!', '?', '!!!', '?!?');
+	        faces = new Array(':|', ':o', ':O', ':p', '<_<', '>_>', '-___-\'');
+	    break;
+	    case 'curiosity':
+	        influencers = new Array('ooooo', 'hey', 'wow', 'yes', 'yo', 'oh');
+	        punctuations = new Array('.', '...', '!', '?');
+	        faces = new Array(':)', ':3', ':o', ':O', ':D', ';)');
+	    break;
+	    case 'joyful':
+	        influencers = new Array('oh', 'yes', 'wow', 'oh boy');
+	        punctuations = new Array('!', '!!!');
+	        faces = new Array(':)', ':D', ':3', '<3', 'C:', ':P');
+	    break;
+	    case 'excited':
+	        influencers = new Array('oh', 'yay', 'wow');
+	        punctuations = new Array('!', '!!!', '?!?');
+	        faces = new Array(':)', ':D', ':3', '<3', 'C:', ':P', ':O');
+	    break;
+	    case 'calm':
+	        influencers = new Array('well');
+	        punctuations = new Array('.', '...');
+	        faces = new Array(':|');
+	    break;
+	    case 'ashamed':
+	        influencers = new Array('no', 'uhhh', 'ummmm', 'sorry');
+	        punctuations = new Array('...');
+	        faces = new Array(':(', 'D:', ':C', ':L', '.___.', '-___-', '-___-\'');
+	    break;
+	    case 'apathetic':
+	        influencers = new Array('meh');
+	        punctuations = new Array('...');
+	        faces = new Array(':|', '.___.', '-___-');
+	    break;
+	    case 'logical':
+	        influencers = new Array('yes', 'no');
+	        punctuations = new Array('.');
+	        faces = new Array(':|');
+	    break;
+    }
+    
     var statement = getRandomItem(statements);
 
-    // Fill in all segments
+    // fill in all segments
     while(statement.search('%seg') != -1) {
     	statement = statement.split('%seg').join(getRandomItem(segments));
     }
@@ -609,7 +150,7 @@ function speak(segments, statements) {
     	while((code >= 97 && code <= 122) || code == 63) {
     		if(code == 63) {
     			if(getRandomRange(0, 100) > 80) {
-    				// Reject the symbol
+    				// reject the symbol
     				symbol = '';
     				break;
     			}
@@ -621,50 +162,53 @@ function speak(segments, statements) {
     	}
 
     	switch(symbol) {
-    		// Conditional (then, but, and, or)
+    		// conditional (then, but, and, or)
     		case 'c': word = getRandomItem(conditionals); break;
     			
-    		// Reflection (is, was, will be)
+    		// reflection (is, was, will be)
     		case 'r': word = getRandomItem(reflections); break;
     		
-    		// Description (adjectives)
+    		// description (adjectives)
     		case 'd': word = getRandomItem(descriptions); break;
     		
-    		// Object (nouns)
+    		// object (nouns)
     		case 'o': word = getRandomItem(objects); break;
     		
-    		//  Source (I, we, she, he, it)
+    		//  source (i, we, she, he, it)
     		case 's': word = getRandomItem(sources); break;
     		
-    		// Action (verbs)
+    		// action (verbs)
     		case 'a': word = getRandomItem(actions); break;
     		
-    		// Emotive (angry, happy, not sure, confused, etc.)
+    		// emotive (angry, happy, not sure, confused, etc.)
     		case 'e': word = getRandomItem(emotives); break;
     		
-    		// Possessor (my, your, our, his, her, its, the, a)
+    		// possessor (my, your, our, his, her, its, the, a)
     		case 'p': word = getRandomItem(possessors); break;
     		
-    		// Meaning (adverb)
+    		// meaning (adverb)
     		case 'm': word = getRandomItem(meanings); break;
     		
-    		// Influencer (Uhhh, Come on, Guys, Yo, Yes, Well, No etc.)
+    		// influencer (uhhh, come on, guys, yo, yes, well, no etc.)
     		case 'i': word = getRandomItem(influencers); break;
     		
-    		// Emotive Action (am, can, will, shall, might, are, should, could, would)
+    		// subject
+    		case 'j': word = getRandomItem(subjects); break;
+    		
+    		// emotive action (am, can, will, shall, might, are, should, could, would)
     		case 'v':
     			var previous = position - 3;
     			if(previous < 0) {
     				previous = 0;
     			}
-    			console.log([previous, statement.substr(previous, 3), statement.substr(previous, 3).search('we')]);
+
     			if(statement.substr(previous, 3).search('we') == -1) {
     				word = getRandomItem(singularEmotiveActions); break;	
     			} else {
     				word = getRandomItem(pluralEmotiveActions); break;
     			}
     		
-    		// Modal Action (can, will, shall, might, are, should, could, would)
+    		// modal action (can, will, shall, might, are, should, could, would)
     		case 't':
     			word = getRandomItem(modalActions); break;
     		
@@ -674,5 +218,17 @@ function speak(segments, statements) {
     	statement = spliceSlice(statement, position, cursor - position, word);
     	position = statement.search('%');
     }
-    return statement + getRandomItem(punctuations);
+    
+    var result = '';
+    if(statement.substr(0, 6) == 'should' || statement.substr(0, 2) == 'if') {
+    	result = statement + '?';
+    } else {
+    	result = statement + getRandomItem(punctuations);
+    }
+    
+    if(getRandomRange(0, 100) > 80) {
+    	result += ' ' + getRandomItem(faces)
+    }
+
+    return result;
 }
