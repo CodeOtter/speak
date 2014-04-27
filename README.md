@@ -55,3 +55,5 @@ This will select a random statement from your second argument, populate it, and 
 ```
 
 Punctuation and faces will be randomly generated based on the mood (first) parameter.
+
+*NOTE*: Tokenization is hacky as balls, so if you place an invalid symbol in a statement template, you will cause the script to hang indefinitely. :(
