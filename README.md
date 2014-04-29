@@ -1,7 +1,7 @@
 speak
 =====
 
-A random sentence generator for JavaScript.  Currently, the default object list and some statements are based on a modified variation of Cards against Humanity.
+A random sentence generator for JavaScript.  Currently, the default object list and some statements are based on a modified variation of Cards against Humanity.  Check out the [test page](test.html) to try it out.
 
 basic usage
 -----------
